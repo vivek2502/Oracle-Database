@@ -99,9 +99,7 @@ SELECT POWER(5,2)FROM DUAL;
 SELECT POWER(25,2)FROM DUAL;
                                                   
                                         --SYSDATE
-SELECT SYSDATE FROM DUAL;                                        
 
-SELECT SYSTIMESTAMP FROM DUAL;
 
 
                                                   
