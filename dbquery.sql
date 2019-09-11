@@ -100,6 +100,32 @@ SELECT ROUND(SQRT(25),2)FROM DUAL;
                                         --SQRT()                               
 SELECT POWER(5,2)FROM DUAL;
 SELECT POWER(25,2)FROM DUAL;
+                                                  
+--D>DATE FUNCTION               
+                                                  --MONTH_BETWEEN()
+SELECT MONTHS_BETWEEN('14-11-2018','14-02-2018')AS "MONTH" FROM DUAL;
+SELECT MONTHS_BETWEEN('14-02-2018','14-11-2018')AS "MONTH" FROM DUAL;
+                                                  
+                                                  --ADD_MONTH
+SELECT ADD_MONTHS('O14-02-2019',9)FROM DUAL;
+                                                  
+                                                  --NEXT_DAY()
+SELECT NEXT_DAY('31-AUG-2019',2) FROM DUAL;
+SELECT NEXT_DAY('31-AUG-2019','FRI') FROM DUAL;
+SELECT NEXT_DAY('31-AUG-2019','FRIDAY') FROM DUAL;
+SELECT NEXT_DAY('31-AUG-2019','FRIEND') FROM DUAL;
+                                                  
+                                                   --LAST_DAY()
+SELECT LAST_DAY('31-AUG-2019') FROM DUAL;
+SELECT LAST_DAY('25-AUG-2019') FROM DUAL;                                                                              
+
+                                                   --EXTRACT()
+SELECT HIRE_DATE,EXTRACT(DAY FROM HIRE_DATE)AS DAY,
+EXTRACT(MONTH FROM HIRE_DATE)AS MONTH,
+EXTRACT(YEAR FROM HIRE_DATE)AS YEAR FROM EMPLOYEES; 
+SELECT * FROM EMPLOYEES WHERE EXTRACT(DAY FROM HIRE_DATE)=10;       
+SELECT * FROM EMPLOYEES WHERE EXTRACT(MONTH FROM HIRE_DATE)=08;
+
 ------------------------------------------------------------------------------------------------------------
                                            
 --2>MULTI ROW/AGGREGATE/GROUP FUCTION
@@ -183,30 +209,7 @@ SELECT e.employee_id,d.department_name
 FROM EMPLOYEES E INNER JOIN DEPARTMENTS D 
 ON e.department_id=d.department_id 
 WHERE d.department_name='Administration';
-
-                                                  --MONTH_BETWEEN()
-SELECT MONTHS_BETWEEN('14-11-2018','14-02-2018')AS "MONTH" FROM DUAL;
-SELECT MONTHS_BETWEEN('14-02-2018','14-11-2018')AS "MONTH" FROM DUAL;
                                                   
-                                                  --ADD_MONTH
-SELECT ADD_MONTHS('O14-02-2019',9)FROM DUAL;
-                                                  
-                                                  --NEXT_DAY()
-SELECT NEXT_DAY('31-AUG-2019',2) FROM DUAL;
-SELECT NEXT_DAY('31-AUG-2019','FRI') FROM DUAL;
-SELECT NEXT_DAY('31-AUG-2019','FRIDAY') FROM DUAL;
-SELECT NEXT_DAY('31-AUG-2019','FRIEND') FROM DUAL;
-                                                  
-                                                   --LAST_DAY()
-SELECT LAST_DAY('31-AUG-2019') FROM DUAL;
-SELECT LAST_DAY('25-AUG-2019') FROM DUAL;                                                                              
-
-                                                   --EXTRACT()
-SELECT HIRE_DATE,EXTRACT(DAY FROM HIRE_DATE)AS DAY,
-EXTRACT(MONTH FROM HIRE_DATE)AS MONTH,
-EXTRACT(YEAR FROM HIRE_DATE)AS YEAR FROM EMPLOYEES; 
-SELECT * FROM EMPLOYEES WHERE EXTRACT(DAY FROM HIRE_DATE)=10;       
-SELECT * FROM EMPLOYEES WHERE EXTRACT(MONTH FROM HIRE_DATE)=08;
 
 
                                                   
