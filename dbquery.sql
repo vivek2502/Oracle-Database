@@ -186,12 +186,7 @@ WHERE d.department_name='Administration';
 
 
                                        
-                                        --LAST_DAY()
-SELECT LAST_DAY('31-AUG-2019') FROM DUAL;
-SELECT LAST_DAY('25-AUG-2019') FROM DUAL;
-SELECT LAST_DAY(SYSDATE)+1 FROM DUAL;
-SELECT LAST_DAY(SYSDATE)-SYSDATE FROM DUAL;
-SELECT NEXT_DAY('31-AUG-2019','FRIEND') FROM DUAL;
+                                        
 
                                         --EXTRACT()
 SELECT HIRE_DATE,EXTRACT(DAY FROM HIRE_DATE)AS DAY,
