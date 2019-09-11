@@ -7,9 +7,7 @@ select * from employees where job_id is not null and commission_pct is null and
 (first_name like 'A%' or first_name like 'S%') and salary like '2%' and 
  hire_date BETWEEN '01-01-2011' and '31-12-2011'; 
 --===========================================================================================================
-
-
-                                        --FUNCTION 
+                                                   --FUNCTION 
 --1>SINGLE ROW FUCTION
    --A>CHARACTER FUNCTION
       --i>CASE MANUPULATION FUNCTION
