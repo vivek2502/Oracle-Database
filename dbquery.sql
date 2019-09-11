@@ -1,5 +1,5 @@
 --===========================================================================================================
-                                                 --LOGICAL OPERATOR
+                                                 --LOGICAL OPERATOR sysdate
 select * from employees where job_id='AD_PRES' or job_id='ST_CLERK' and salary > 36000;
 select  last_name,salary from employees where salary between 1000 and 13000 and last_name like '_____';
 select * from employees where job_id='ST_CLERK' and department_id in (10,20,30,50);
