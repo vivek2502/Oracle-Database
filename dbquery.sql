@@ -100,6 +100,87 @@ SELECT POWER(25,2)FROM DUAL;
                                                   --SQRT()                               
 SELECT POWER(5,2)FROM DUAL;
 SELECT POWER(25,2)FROM DUAL;
+                                                  --2>MULTI ROW/AGGREGATE/GROUP FUCTION
+                                        --COUNT()
+SELECT COUNT(*) FROM EMPLOYEES;
+SELECT COUNT(FIRST_NAME) FROM EMPLOYEES;
+SELECT COUNT(*)/2 FROM EMPLOYEES;
+
+                                        --SUM()
+SELECT SUM(SALARY) FROM EMPLOYEES;
+SELECT COUNT(*),SUM(SALARY) FROM EMPLOYEES WHERE department_id=20;
+SELECT COUNT(FIRST_NAME),SUM(SALARY) FROM EMPLOYEES WHERE FIRST_NAME LIKE'%ll%';
+
+                                        --AVG()
+SELECT ROUND(AVG(SALARY),2) FROM EMPLOYEES;
+SELECT ROUND(AVG(SALARY),2) FROM EMPLOYEES;
+
+                                        --MIN()
+SELECT MIN(SALARY) FROM EMPLOYEES;
+SELECT MIN(HIRE_DATE)FROM employees;
+
+                                        --MAX()
+SELECT MAX(SALARY) FROM EMPLOYEES;
+SELECT MAX(HIRE_DATE)FROM employees;
+SELECT COUNT(*),SUM(SALARY),MAX(SALARY),MIN(SALARY),AVG(SALARY)FROM EMPLOYEES WHERE MANAGER_ID IS NOT NULL;
+
+
+                                        --GROUP BY <--Clause
+SELECT COUNT(*),department_id, SUM(salary) FROM EMPLOYEES GROUP BY department_id;
+SELECT department_id, SUM(salary) FROM EMPLOYEES WHERE DEPARTMENT_ID=20 GROUP BY department_id;
+SELECT department_id, MAX(salary) FROM EMPLOYEES WHERE DEPARTMENT_ID > 20 GROUP BY department_id;
+SELECT COUNT(*) FROM EMPLOYEES WHERE JOB_ID='ST_CLERK' GROUP BY department_id;
+SELECT department_id,MAX(SALARY),MIN(SALARY) FROM EMPLOYEES GROUP BY department_id;
+
+                                        --HAVING  <--Clause
+SELECT DEPARTMENT_ID FROM EMPLOYEES WHERE JOB_ID='ST_CLERK' GROUP BY DEPARTMENT_ID 
+HAVING COUNT(DEPARTMENT_ID)>2;
+SELECT MAX(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT_ID HAVING COUNT(*)<15;
+
+                                        --ORDER BY  <--Clause
+SELECT FIRST_NAME FROM EMPLOYEES ORDER BY FIRST_NAME;
+SELECT FIRST_NAME FROM EMPLOYEES ORDER BY FIRST_NAME DESC;
+SELECT LAST_NAME,FIRST_NAME FROM EMPLOYEES ORDER BY LAST_NAME,FIRST_NAME DESC;
+SELECT LAST_NAME,FIRST_NAME FROM EMPLOYEES ORDER BY FIRST_NAME DESC,LAST_NAME ASC;
+SELECT DEPARTMENT_ID,MAX(SALARY) FROM EMPLOYEES WHERE DEPARTMENT_ID>10 GROUP BY department_id 
+HAVING MAX(SALARY)>20000 ORDER BY department_id;
+--============================================================================================================
+--*JOINS
+                                        --CARTESIAN/CROSS JOINS
+                                        
+select * from employees,departments;
+select * from employees CROSS JOIN departments;
+select * from employees,departments WHERE FIRST_NAME='Sachin';
+select * from employees CROSS JOIN departments WHERE FIRST_NAME='Sachin';
+select * from employees,departments WHERE LOCATION_ID=2500;
+select * from employees CROSS JOIN departments WHERE LOCATION_ID=2500;
+select * from employees,departments WHERE department_id=90;--AMBIGUITY
+select * from employees CROSS JOIN departments WHERE department_id=90;--AMBIGUITY
+
+                                        --TABLE ALIAS
+select * from employees e,departments d WHERE E.department_id=90;
+select * from employees e CROSS JOIN departments d WHERE E.department_id=90;
+select * from employees e,departments d WHERE D.department_id=90;
+select * from employees E CROSS JOIN departments d WHERE D.department_id=90;
+select * from employees e,departments d WHERE E.department_id=90 AND d.department_id=90;
+select * from employees e CROSS JOIN departments d WHERE E.department_id=90 AND d.department_id=90;
+
+                                        --EQUI/INNER JOIN
+SELECT e.department_id,d.department_id 
+FROM EMPLOYEES E,DEPARTMENTS D 
+WHERE e.department_id=d.department_id ;
+
+SELECT e.employee_id,d.department_name 
+FROM EMPLOYEES E,DEPARTMENTS D 
+WHERE e.department_id=d.department_id 
+AND d.department_name='Administration';
+
+SELECT e.employee_id,d.department_name 
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D 
+ON e.department_id=d.department_id 
+WHERE d.department_name='Administration';
+
+
                                        
 
 
