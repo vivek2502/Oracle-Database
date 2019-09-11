@@ -100,7 +100,7 @@ SELECT POWER(25,2)FROM DUAL;
                                                   
                                         --SYSDATE
 SELECT SYSDATE FROM DUAL;                                        
-SELECT TO_CHAR(SYSDATE, 'MM-DD-YYYY HH24:MI:SS') "NOW" FROM DUAL;
+
 SELECT SYSTIMESTAMP FROM DUAL;
 
 
