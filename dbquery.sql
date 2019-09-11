@@ -184,11 +184,24 @@ FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
 ON e.department_id=d.department_id 
 WHERE d.department_name='Administration';
 
+                                                  --MONTH_BETWEEN()
+SELECT MONTHS_BETWEEN('14-11-2018','14-02-2018')AS "MONTH" FROM DUAL;
+SELECT MONTHS_BETWEEN('14-02-2018','14-11-2018')AS "MONTH" FROM DUAL;
+                                                  
+                                                  --ADD_MONTH
+SELECT ADD_MONTHS('O14-02-2019',9)FROM DUAL;
+                                                  
+                                                  --NEXT_DAY()
+SELECT NEXT_DAY('31-AUG-2019',2) FROM DUAL;
+SELECT NEXT_DAY('31-AUG-2019','FRI') FROM DUAL;
+SELECT NEXT_DAY('31-AUG-2019','FRIDAY') FROM DUAL;
+SELECT NEXT_DAY('31-AUG-2019','FRIEND') FROM DUAL;
+                                                  
+                                                   --LAST_DAY()
+SELECT LAST_DAY('31-AUG-2019') FROM DUAL;
+SELECT LAST_DAY('25-AUG-2019') FROM DUAL;                                                                              
 
-                                       
-                                        
-
-                                        --EXTRACT()
+                                                   --EXTRACT()
 SELECT HIRE_DATE,EXTRACT(DAY FROM HIRE_DATE)AS DAY,
 EXTRACT(MONTH FROM HIRE_DATE)AS MONTH,
 EXTRACT(YEAR FROM HIRE_DATE)AS YEAR FROM EMPLOYEES; 
