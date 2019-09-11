@@ -56,3 +56,12 @@ select replace('Banglore','B','M') from dual;
 select REPLACE('JACK and JUE','J','BL') from dual;
 select replace('Captain Vivek','Vivek')from dual;
 select replace('MISSISIPPI','IS',15)FROM DUAL;
+    
+--B>GENERAL FUNCTION
+                                        --NVL()
+select commission_pct, NVL(commission_pct,0)from employees;
+
+                                        --NVL2()
+select commission_pct, NVL(commission_pct,0),NVL2(commission_pct,5,0)from employees;
+SELECT EMPLOYEE_ID,FIRST_NAME,NVL(SALARY+COMMISSION_pct,0) AS "SALARY" from employees;
+
