@@ -97,10 +97,9 @@ SELECT ROUND(SQRT(25),2)FROM DUAL;
                                         --SQRT()                               
 SELECT POWER(5,2)FROM DUAL;
 SELECT POWER(25,2)FROM DUAL;
-                                                  --SQRT()                               
-SELECT POWER(5,2)FROM DUAL;
-SELECT POWER(25,2)FROM DUAL;
-                                                  --2>MULTI ROW/AGGREGATE/GROUP FUCTION
+------------------------------------------------------------------------------------------------------------
+                                           
+--2>MULTI ROW/AGGREGATE/GROUP FUCTION
                                         --COUNT()
 SELECT COUNT(*) FROM EMPLOYEES;
 SELECT COUNT(FIRST_NAME) FROM EMPLOYEES;
