@@ -177,17 +177,28 @@ HAVING MAX(SALARY)>20000 ORDER BY department_id;
                                                --*JOINS
 --============================================================================================================                                                 
                                         --CARTESIAN/CROSS JOINS
-                                        
+SELECT * FROM TAB1 , TAB2; 
+SELECT * FROM TAB1 CROSS JOIN TAB2;
+SELECT * FROM TAB1 , TAB2,TAB3; 
+SELECT * FROM TAB1 CROSS JOIN TAB2 CROSS JOIN TAB3; 
 select * from employees,departments;
 select * from employees CROSS JOIN departments;
+SELECT * FROM TAB1 , TAB2 WHERE A=1;  
+SELECT * FROM TAB1 CROSS JOIN TAB2 WHERE A=1;  
 select * from employees,departments WHERE FIRST_NAME='Sachin';
 select * from employees CROSS JOIN departments WHERE FIRST_NAME='Sachin';
 select * from employees,departments WHERE LOCATION_ID=2500;
 select * from employees CROSS JOIN departments WHERE LOCATION_ID=2500;
+SELECT * FROM TAB1 , TAB2 WHERE B=2;--AMBIGUITY  
+SELECT * FROM TAB1 CROSS JOIN TAB2 WHERE B=2;--AMBIGUITY  
 select * from employees,departments WHERE department_id=90;--AMBIGUITY
 select * from employees CROSS JOIN departments WHERE department_id=90;--AMBIGUITY
 
                                         --TABLE ALIAS
+SELECT * FROM TAB1 T1 , TAB2 T2 WHERE T1.B=2;  
+SELECT * FROM TAB1 T1 CROSS JOIN TAB2 T2 WHERE T1.B=2;  
+SELECT * FROM TAB1 T1 , TAB2 T2,TAB3 WHERE T1.B=2;  
+SELECT * FROM TAB1 T1 CROSS JOIN TAB2 T2 CROSS JOIN TAB3 WHERE T1.B=2; 
 select * from employees e,departments d WHERE E.department_id=90;
 select * from employees e CROSS JOIN departments d WHERE E.department_id=90;
 select * from employees e,departments d WHERE D.department_id=90;
@@ -196,19 +207,28 @@ select * from employees e,departments d WHERE E.department_id=90 AND d.departmen
 select * from employees e CROSS JOIN departments d WHERE E.department_id=90 AND d.department_id=90;
 
                                         --EQUI/INNER JOIN
-SELECT e.department_id,d.department_id 
-FROM EMPLOYEES E,DEPARTMENTS D 
-WHERE e.department_id=d.department_id ;
+SELECT * FROM TAB1 E , TAB2 D WHERE E.B=D.B;
+SELECT * FROM TAB1 E INNER JOIN TAB2 D ON E.B=D.B;
+SELECT * FROM TAB1 E,TAB2 D,TAB3 T WHERE E.B=D.B AND D.C=T.C;
+SELECT * FROM TAB1 E INNER JOIN TAB2 D ON E.B=D.B INNER JOIN TAB3 T ON D.C=T.C;
+SELECT * FROM EMPLOYEES E,DEPARTMENTS D WHERE e.department_id=d.department_id ;
+SELECT * FROM EMPLOYEES E INNER JOIN DEPARTMENTS D ON e.department_id=d.department_id ;
+SELECT e.employee_id,d.department_name FROM EMPLOYEES E,DEPARTMENTS D 
+                                                  WHERE e.department_id=d.department_id AND d.department_name='Administration';
+SELECT e.employee_id,d.department_name FROM EMPLOYEES E INNER JOIN DEPARTMENTS D ON e.department_id=d.department_id 
+                                                  WHERE d.department_name='Administration';
 
-SELECT e.employee_id,d.department_name 
-FROM EMPLOYEES E,DEPARTMENTS D 
-WHERE e.department_id=d.department_id 
-AND d.department_name='Administration';
+                                        --LEFT OUTER JOIN 
+SELECT * FROM TAB1 E LEFT OUTER JOIN TAB2 D ON E.B=D.B;
+SELECT * FROM EMPLOYEES E LEFT OUTER JOIN departments D ON e.department_id=d.department_id;
 
-SELECT e.employee_id,d.department_name 
-FROM EMPLOYEES E INNER JOIN DEPARTMENTS D 
-ON e.department_id=d.department_id 
-WHERE d.department_name='Administration';
+                                        --RIGHT OUTER JOIN 
+SELECT * FROM TAB1 E RIGHT OUTER JOIN TAB2 D ON E.B=D.B;
+SELECT * FROM EMPLOYEES E RIGHT OUTER JOIN departments D ON e.department_id=d.department_id;
+
+                                        --FULL OUTER JOIN 
+SELECT * FROM TAB1 E FULL OUTER JOIN TAB2 DON E.B=D.B;
+SELECT * FROM EMPLOYEES E FULL OUTER JOIN departments D ON e.department_id=d.department_id;
                                                   
 
 
