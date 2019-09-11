@@ -97,6 +97,9 @@ SELECT ROUND(SQRT(25),2)FROM DUAL;
                                         --SQRT()                               
 SELECT POWER(5,2)FROM DUAL;
 SELECT POWER(25,2)FROM DUAL;
+                                                  --SQRT()                               
+SELECT POWER(5,2)FROM DUAL;
+SELECT POWER(25,2)FROM DUAL;
 
 
 
