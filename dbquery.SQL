@@ -1,3 +1,4 @@
+--BEFORE EXECUTING THESE QUERY PLEASE RUN DDL QUERY SAVED IN DDL.SQL FILE INSIDE ORACLE-DATABASE REPOSITERY.
 --===========================================================================================================
                                                  --LOGICAL OPERATOR 
 select * from employees where job_id='AD_PRES' or job_id='ST_CLERK' and salary > 36000;
@@ -229,6 +230,16 @@ SELECT * FROM EMPLOYEES E RIGHT OUTER JOIN departments D ON e.department_id=d.de
                                         --FULL OUTER JOIN 
 SELECT * FROM TAB1 E FULL OUTER JOIN TAB2 DON E.B=D.B;
 SELECT * FROM EMPLOYEES E FULL OUTER JOIN departments D ON e.department_id=d.department_id;
+                                                  
+                                      --NATURAL JOIN
+SELECT * FROM TAB1 NATURAL JOIN TAB2;
+SELECT *
+FROM EMPLOYEES  NATURAL JOIN departments ;
+
+                                      --SELF JOIN
+SELECT E.* FROM TAB1 E,TAB1 D WHERE E.B=D.B;                                        
+SELECT E1.* FROM EMPLOYEES E1 ,EMPLOYEES E2; 
+SELECT E1.FIRST_NAME FROM EMPLOYEES E1 , EMPLOYEES E2 WHERE e1.department_id=e2.department_id;
                                                   
 
 
